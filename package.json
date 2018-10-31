@@ -14,7 +14,8 @@
     "test": "jest",
     "test:all": "yarn run test:flow && yarn run test:ts",
     "test:ts": "cross-env BABEL_ENV=test jest",
-    "test:flow": "cross-env BABEL_ENV=flow jest --config ./jest.config.flow.js"
+    "test:flow": "cross-env BABEL_ENV=flow jest --config ./jest.config.flow.js",
+    "createModule": "node ./scripts/createModule.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
@@ -26,6 +27,7 @@
     "@types/jest": "^23.3.9",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
+    "commander": "^2.19.0",
     "cross-env": "^5.2.0",
     "flow-bin": "^0.85.0",
     "flow-copy-source": "^2.0.2",

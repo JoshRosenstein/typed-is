@@ -1,0 +1,37 @@
+{
+  "name": "typed-is",
+  "version": "1.0.0",
+  "description": "is utiltity belt to work with flow and ts",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "flow:gen": "flow gen-flow-files src --out-dir genFlowDefs",
+    "build:types": "yarn run build:typesTS && yarn run build:typesflow",
+    "build:typesTS": "tsc --emitDeclarationOnly",
+    "build:typesflow": "flow-copy-source -v --ignore **/*.spec.js src lib",
+    "test": "jest",
+    "test:all": "yarn run test:flow && yarn run test:ts",
+    "test:ts": "cross-env BABEL_ENV=test jest",
+    "test:flow": "cross-env BABEL_ENV=flow jest --config ./jest.config.flow.js"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-flow": "^7.0.0",
+    "@babel/preset-typescript": "^7.1.0",
+    "@types/jest": "^23.3.9",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "cross-env": "^5.2.0",
+    "flow-bin": "^0.85.0",
+    "flow-copy-source": "^2.0.2",
+    "i": "^0.3.6",
+    "jest": "^23.6.0",
+    "jest-each": "^23.6.0",
+    "npm": "^6.4.1",
+    "ts-jest": "^23.10.4",
+    "typescript": "^3.1.4"
+  }
+}

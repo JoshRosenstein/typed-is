@@ -2,11 +2,20 @@
   "name": "typed-is",
   "version": "1.0.0",
   "description": "is utiltity belt to work with flow and ts",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "author": "Josh Rosenstein",
   "license": "MIT",
+  "files": [
+    "dist",
+    "lib",
+    "es",
+    "README.md"
+  ],
   "scripts": {
+    "prepack": "yarn run build",
+    "postpack": "npm run clean:scripts",
     "flow:gen": "flow gen-flow-files src --out-dir genFlowDefs",
-    "build": " rimraf lib && yarn run build:typesflow && yarn run build:ts",
+    "build": "yarn run clean &&  yarn run generate:index && yarn run build:typesflow && yarn run build:ts",
     "build:ts": "tsc",
     "build:types": "yarn run build:typesTS && yarn run build:typesflow",
     "build:typesTS": "tsc --emitDeclarationOnly",
@@ -15,6 +24,10 @@
     "test:all": "yarn run test:flow && yarn run test:ts",
     "test:ts": "cross-env BABEL_ENV=test jest",
     "test:flow": "cross-env BABEL_ENV=flow jest --config ./jest.config.flow.js",
+    "clean": "rimraf es/* lib/* dist/**/*.js coverage/* & yarn run clean:scripts ",
+    "clean:scripts": "node scripts/clean.js",
+    "clean:modules": "rimraf node_modules/*",
+    "generate:index": "node ./scripts/generateIndex.js",
     "createModule": "node ./scripts/createModule.js"
   },
   "devDependencies": {

@@ -19,7 +19,7 @@ function run(name, options) {
 
   var tsContent = `
   export const ${name} = (obj: any): obj is boolean => {
-      return typeof x === "${name}";
+      return typeof obj === "${name}";
     };
     
     export default ${name};
@@ -28,7 +28,7 @@ function run(name, options) {
   var flowContent = `
 // @flow
 export const ${name} = (obj:any): boolean %checks => {
-    return typeof x === "${name}";
+    return typeof obj === "${name}";
 };
 
 export default ${name};
@@ -90,12 +90,11 @@ test.each(data)("${name}(%o) === %o", (value, expected) => {
   var tsTypeCheckContent = `
 import ${name} from "../src/${name}";
 
-const t1 = (n: [number] | number) => {
-  if (${name}(n)) {
-    return n.length;
-  }
-  const a = n.length; //Expect Error
-};
+const t1 = (n: number | Function): [Function, Function] => {
+    const Pass = ${name}(n) ? n : () => 1;
+    const Fail = n;
+    return [Pass, Fail];
+  };
 
 `;
 
@@ -103,13 +102,11 @@ const t1 = (n: [number] | number) => {
 // @flow
 import ${name} from "../src/${name}.js";
 
-const t1 = (n: [number] | number) => {
-  if (${name}(n)) {
-    return n.length;
-  }
-  const a = n.length; //Expect Error
-};
-
+const t1 = (n: number | Function): [Function, Function] => {
+    const Pass = ${name}(n) ? n : () => 1;
+    const Fail = n;
+    return [Pass, Fail];
+  };
 
 `;
 

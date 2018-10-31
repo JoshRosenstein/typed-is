@@ -1,6 +1,6 @@
 {
   "name": "typed-is",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "is utiltity belt to work with flow and ts",
   "main": "lib/index.js",
   "author": "Josh Rosenstein",

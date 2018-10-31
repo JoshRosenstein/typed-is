@@ -6,6 +6,8 @@
   "license": "MIT",
   "scripts": {
     "flow:gen": "flow gen-flow-files src --out-dir genFlowDefs",
+    "build": " rimraf lib && yarn run build:typesflow && yarn run build:ts",
+    "build:ts": "tsc",
     "build:types": "yarn run build:typesTS && yarn run build:typesflow",
     "build:typesTS": "tsc --emitDeclarationOnly",
     "build:typesflow": "flow-copy-source -v --ignore **/*.spec.js src lib",
@@ -31,6 +33,7 @@
     "jest": "^23.6.0",
     "jest-each": "^23.6.0",
     "npm": "^6.4.1",
+    "rimraf": "^2.6.2",
     "ts-jest": "^23.10.4",
     "typescript": "^3.1.4"
   }

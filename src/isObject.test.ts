@@ -15,7 +15,8 @@ const data = [
   ["new Object()", true],
   ["Object", false],
   ["new function(){}", true],
-  ["new Function()", false]
+  ["new Function()", false],
+  ["null", false]
 ];
 
 test.each(data)("isObject(%s) === %o", (code, expected) => {

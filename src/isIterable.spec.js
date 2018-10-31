@@ -3,14 +3,15 @@ import each from "jest-each";
 
 const validData = [
   ["foo", "bar"],
-  "foo",
-  new Set(["foo", "bar"]),
-  {
-    *[Symbol.iterator]() {
-      yield 1;
-      yield 42;
-    }
-  }
+  "foo"
+
+  // new Set(["foo", "bar"]),
+  // {
+  //   *[Symbol.iterator]() {
+  //     yield 1;
+  //     yield 42;
+  //   }
+  // }
 ];
 
 const invalidData = [{ foo: "bar", baz: 42 }, 0, 1, NaN];

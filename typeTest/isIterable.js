@@ -10,6 +10,7 @@ const method = <T: number>(y: T | Iterable<T>) => {
   }
 
   let chars2 = [];
+  //$FlowExpectedError
   for (let char of y) {
     //expect Error
     chars2.push(char);

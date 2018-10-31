@@ -1,6 +1,6 @@
 type TypeNameMap = {
   function: Function;
-  object: null | object;
+  object: object;
   string: string;
   number: number;
   boolean: boolean;
@@ -17,10 +17,11 @@ type TypeName<T = any> = T extends Function
 type ExtractByTypeName<T, Type extends TypeName> = T extends Function
   ? ("function" extends Type ? T : never)
   : T extends TypeNameMap[Type] ? T : never;
-
+// Include functions or Not?
 export const isObject = <T>(
   value: T
-): value is Exclude<ExtractByTypeName<T, "object">, null> => {
+): value is ExtractByTypeName<T, "object"> => {
+  const type = typeof value;
   return null !== value && "object" === typeof value;
 };
 

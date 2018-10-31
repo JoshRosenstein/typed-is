@@ -12,5 +12,6 @@ const t2 = (n: [number] | number) => {
   if (isArrayLike(n)) {
     return n.map(x => 1);
   }
+  //$FlowExpectedError
   const a = n.map(x => 1); //Expect Error
 };

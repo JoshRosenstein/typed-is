@@ -1,6 +1,5 @@
 // @flow
-export const isString = (value: any): boolean %checks =>
-  "string" === typeof value;
+export const isString = (obj: any): boolean %checks => typeof obj === "string";
 
 export default isString;
 

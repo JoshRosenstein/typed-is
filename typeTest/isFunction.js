@@ -2,10 +2,9 @@
 
 import isFunction from "../src/isFunction";
 
-const method = (y: number | Function) => {
-  const a = y(); //expect Error
-
-  if (isFunction(y)) {
-    const b = y();
-  }
+const t1 = (n: number | Function): [Function, Function] => {
+  const Pass = isFunction(n) ? n : () => 1;
+  const Fail = n;
+  //$FlowExpectedError
+  return [Pass, Fail];
 };

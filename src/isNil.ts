@@ -13,7 +13,7 @@
  *      isNil(0); //=> false
  *      isNil([]); //=> false
  */
-export const isNil = (target: any): target is null | undefined => {
+export const isNil = (target: unknown): target is null | undefined => {
   return target == null;
 };
 

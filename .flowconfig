@@ -14,7 +14,7 @@ flow-typed
 [lints]
 
 [options]
-include_warnings=true
+include_warnings=false
 emoji=true
 module.name_mapper='^types$' ->'<PROJECT_ROOT>/types'
 

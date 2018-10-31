@@ -5,6 +5,7 @@ const t1 = (n: [number] | number) => {
   if (isArrayLike(n)) {
     return n.length;
   }
+  //$FlowExpectedError
   const a = n.length; //Expect Error
 };
 

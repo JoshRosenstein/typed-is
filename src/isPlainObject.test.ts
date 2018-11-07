@@ -7,6 +7,8 @@ const eval_ = (code: string) => {
 
 const data = [
   [{}, true],
+  ["Object.create({})", true],
+  ["Object.create(Object.prototype)", true],
   ["{x: 1}", true],
   ["Object.create(null)", true],
   ["new Date()", false],

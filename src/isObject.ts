@@ -21,8 +21,7 @@ type ExtractByTypeName<T, Type extends TypeName> = T extends Function
 export const isObject = <T>(
   value: T
 ): value is ExtractByTypeName<T, "object"> => {
-  const type = typeof value;
-  return null !== value && "object" === typeof value;
+  return null != value && "object" === typeof value;
 };
 
 export default isObject;

@@ -1,6 +1,6 @@
 {
   "name": "typed-is",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "is utiltity belt to work with flow and ts",
   "main": "lib/index.js",
   "author": "Josh Rosenstein",
@@ -11,6 +11,7 @@
     "es",
     "README.md"
   ],
+  "sideEffects": false,
   "scripts": {
     "prepack": "yarn run build",
     "postpack": "npm run clean:scripts",

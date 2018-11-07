@@ -61,5 +61,11 @@
     // "declarationDir": "lib"                /* Output directory for generated declaration files. */
   },
   //"include": ["**/*.ts"],
-  "exclude": ["node_modules", "**/*.flow.js", "**/typeTest", "**/*.test.ts"]
+  "exclude": [
+    "node_modules",
+    "lib",
+    "**/*.flow.js",
+    "**/typeTest",
+    "**/*.test.ts"
+  ]
 }

@@ -88,34 +88,41 @@ test.each(data)("${name}(%o) === %o", (value, expected) => {
 `;
 
   var tsTypeCheckContent = `
-import ${name} from "../src/${name}";
+  // import ${name} from "../src/${name}";
 
-const t1 = (n: number | Function): [Function, Function] => {
-    const Pass = ${name}(n) ? n : () => 1;
-    const Fail = n;
-    return [Pass, Fail];
-  };
+  // const t1 = (n: number | Function): [Function, Function] => {
+  //     const Pass = ${name}(n) ? n : () => 1;
+  //     const Fail = n;
+  //     return [Pass, Fail];
+  //   };
 
 `;
 
   var flowTypeCheckContent = `
-// @flow
-import ${name} from "../src/${name}.js";
-
-const t1 = (n: number | Function): [Function, Function] => {
-    const Pass = ${name}(n) ? n : () => 1;
-    const Fail = n;
-    return [Pass, Fail];
-  };
+  // flow
+  // import ${name} from "../src/${name}.js";
+  
+  // const t1 = (n: number | Function): [Function, Function] => {
+  //     const Pass = ${name}(n) ? n : () => 1;
+  //     const Fail = n;
+  //     return [Pass, Fail];
+  //   };
 
 `;
 
-  fs.writeSync(fs.openSync(ts, "w"), tsContent);
-  fs.writeSync(fs.openSync(flow, "w"), flowContent);
-  fs.writeSync(fs.openSync(tsTest, "w"), tsTestContent);
-  fs.writeSync(fs.openSync(flowTest, "w"), flowTestContent);
-  fs.writeSync(fs.openSync(tsTypeCheck, "w"), tsTypeCheckContent);
-  fs.writeSync(fs.openSync(flowTypeCheck, "w"), flowTypeCheckContent);
+  function checkThenWrite(path, content) {
+    if (!fs.existsSync(path)) {
+      fs.writeSync(fs.openSync(path, "w"), content);
+    } else {
+      log(`File ${path} already exists, will not overide`);
+    }
+  }
+  checkThenWrite(ts, tsContent);
+  checkThenWrite(flow, flowContent);
+  checkThenWrite(tsTest, tsTestContent);
+  checkThenWrite(flowTest, flowTestContent);
+  checkThenWrite(tsTypeCheck, tsTypeCheckContent);
+  checkThenWrite(flowTypeCheck, flowTypeCheckContent);
 
   console.log("Finished");
 }

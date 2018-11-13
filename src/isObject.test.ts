@@ -7,15 +7,14 @@ const eval_ = (code: string) => {
 
 const data = [
   ["{}", true],
-  ["{x: 1}", true],
+  ["{ x: 1 }", true],
   ["Object.create(null)", true],
   ["new Date()", true],
-  ["Date", false],
   ["1", false],
   ["new Object()", true],
-  ["Object", false],
-  ["new function(){}", true],
-  ["new Function()", false],
+  ["Object", true],
+  ["new function() {}()", true],
+  ["new Function()", true],
   ["null", false]
 ];
 

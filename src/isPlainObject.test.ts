@@ -18,7 +18,16 @@ const data = [
   ["new function(){}", false],
   ["new Function()", false]
 ];
+
 const data2 = [
+  [111, false],
+  ["Hello World", false],
+  [
+    () => {
+      return "Hello World";
+    },
+    false
+  ],
   // [{}, true],
   [{ x: 1 }, true],
   //[Object.create(null), true],

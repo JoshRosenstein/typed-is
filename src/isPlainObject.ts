@@ -1,13 +1,8 @@
-export const isPlainObject = <T>(
-  value: any
-): value is { [key: string]: any } => {
-  const isObject =
-    Object.prototype.toString.call(value).slice(8, -1) === "Object";
-  if (!isObject) return false;
-  return (
-    value.constructor === Object &&
-    Object.getPrototypeOf(value) === Object.prototype
-  );
+import isObjectLike from "./isObjectLike";
+export const isPlainObject = (value: any): value is { [key: string]: any } => {
+  if (!isObjectLike(value)) return false;
+  const p = Object.getPrototypeOf(value);
+  return p === Object.prototype || p === null;
 };
 
 export default isPlainObject;

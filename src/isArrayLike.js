@@ -1,18 +1,10 @@
 // @flow
 import isArray from "./isArray";
-import isObject from "./isObject";
-import isInteger from "./isInteger";
-import isNil from "./isNil";
+import isObjectLike from "./isObjectLike";
+import isLength from "./isLength";
 
 export const isArrayLike = (obj: any): boolean %checks => {
-  return (
-    isArray(obj) ||
-    (isObject(obj) &&
-      !isNil(obj) &&
-      typeof obj.length == "number" &&
-      isInteger(obj.length) &&
-      obj.length >= 0)
-  );
+  return isArray(obj) || (isObjectLike(obj) && isLength(obj.length));
 };
 
 export default isArrayLike;

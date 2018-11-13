@@ -1,16 +1,8 @@
 import isArray from "./isArray";
-import isInteger from "./isInteger";
-import isNil from "./isNil";
+import isObjectLike from "./isObjectLike";
+import isLength from "./isLength";
 
-export const isArrayLike_ = (obj: any): obj is ArrayLike<any> => {
-  return (
-    isArray(obj) ||
-    (typeof obj == "object" &&
-      !isNil(obj) &&
-      typeof obj.length == "number" &&
-      isInteger(obj.length) &&
-      obj.length >= 0)
-  );
-};
+export const isArrayLike = (obj: any): obj is ArrayLike<any> =>
+  isArray(obj) || (isObjectLike(obj) && isLength(obj.length));
 
-export default isArrayLike_;
+export default isArrayLike;

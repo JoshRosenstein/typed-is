@@ -1,8 +1,6 @@
 //@flow
 
-export const isObject = (value: any): boolean %checks => {
-  const t = typeof value;
-  return (null != value && "object" === t) || t === "function";
-};
+export const isObject = (value: any): boolean %checks =>
+  (null != value && "object" === typeof value) || typeof value === "function";
 
 export default isObject;
